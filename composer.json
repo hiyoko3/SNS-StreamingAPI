@@ -1,6 +1,13 @@
 {
     "name": "tatsuya/api",
     "require": {
-        "mapyo/eloquent-only": "^1.0"
+        "cboden/ratchet": "^0.4.1",
+        "spatie/twitter-streaming-api": "^1.4",
+        "illuminate/database": "^5.6"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "app"
+        }
     }
 }
