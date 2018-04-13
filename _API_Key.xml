@@ -1,3 +1,4 @@
+<!-- TODO: you must rename this file to "API_KEY.xml". -->
 <API>
     <twitter>
         <consumer_key></consumer_key>
