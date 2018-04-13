@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/vendor/autoload.php';
 require_once dirname(__FILE__) . '/DBManager.php';
 
 use Illuminate\Database\Eloquent\Model;
-use App\Config\DBManager;
+use App\DBManager;
 
 // Model
 class Tweet extends Model

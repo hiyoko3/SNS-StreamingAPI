@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>index.html</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+<input type="text" id="keyword" placeholder="keyword" />
+<button id="submit">Submit</button>
+<ul id="event-list">
+</ul>
+
+<ul id="ws-list">
+</ul>
+<script>
+    var input = document.querySelector('#keyword'),
+        submit = document.querySelector('#submit'),
+        eventList = document.querySelector('#event-list'),
+        wsList = document.querySelector('#ws-list');
+
+    // var es = new EventSource('./ServerSentEvent.php');
+    //
+    // es.addEventListener('message', function (event) {
+    //     console.log(event);
+    //     var newElement = document.createElement("li");
+    //     var eventList = document.getElementById('event-list');
+    //
+    //     newElement.innerHTML = "message: " + event.data;
+    //     eventList.appendChild(newElement);
+    //     if(eventList.children.length > 30){
+    //         eventList.removeChild(eventList.firstElementChild)
+    //     }
+    // });
+
+    var conn = new WebSocket('ws://localhost:8001');
+    conn.onopen = function(e) {
+        console.log("Connection established!");
+    };
+
+    submit.addEventListener('click', function() {
+        var __text = input.value;
+        conn.send(__text);
+
+        var __li = document.createElement("li");
+        __li.innerHTML = `Send: ${__text}`;
+        wsList.appendChild(__li);
+    });
+
+    conn.onmessage = function(e) {
+        console.log(e.data);
+        var __li = document.createElement("li");
+        __li.innerHTML = `Receive: ${e.data}`;
+        wsList.appendChild(__li);
+    };
+</script>
+</body>
+</html>

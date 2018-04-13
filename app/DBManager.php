@@ -1,5 +1,7 @@
 <?php
-namespace App\Config;
+namespace App;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Exception;
@@ -24,7 +26,7 @@ abstract class SingletonCore{
  */
 class DBManager extends SingletonCore{
     // file path.
-    private $yml = __DIR__ . '/../database.yml';
+    private $xml = __DIR__ . '/../database.xml';
 
     // Environment
     private $env = 'development'; // production, development, test
@@ -35,8 +37,9 @@ class DBManager extends SingletonCore{
     private $capsule;
 
     protected function __construct(){
-        $parsed = yaml_parse($this->yml);
-        $this->config = $parsed['database'][$this->env];
+        $xml = simplexml_load_file($this->xml);
+        $xmlObj = get_object_vars($xml);
+        $this->config = $xmlObj[$this->env];
 
         $this->capsule = new Capsule;
     }
@@ -46,12 +49,12 @@ class DBManager extends SingletonCore{
             $this->capsule->addConnection([
                 'driver' => 'mysql',
                 'host' => '127.0.0.1',
-                'database' => $this->config['host'],
-                'username' => $this->config['username'],
-                'password' => $this->config['password'],
-                'port' => $this->config['port'],
+                'database' => $this->config->host,
+                'username' => $this->config->username,
+                'password' => $this->config->password,
+                'port' => $this->config->port,
                 'collation' => 'utf8_unicode_ci',
-                'charset' => $this->config['charset'],
+                'charset' => $this->config->charset,
             ]);
             $this->capsule->setAsGlobal();
             $this->capsule->bootEloquent();

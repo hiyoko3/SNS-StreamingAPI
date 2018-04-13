@@ -1,0 +1,26 @@
+<database>
+    <production>
+        <host></host>
+        <db></db>
+        <username></username>
+        <password></password>
+        <port></port>
+        <charset>utf8</charset>
+    </production>
+    <development>
+        <host>127.0.0.1</host>
+        <db></db>
+        <username></username>
+        <password></password>
+        <port>3306</port>
+        <charset>utf8</charset>
+    </development>
+    <test>
+        <host>127.0.0.1</host>
+        <db></db>
+        <username></username>
+        <password></password>
+        <port>3306</port>
+        <charset>utf8</charset>
+    </test>
+</database>

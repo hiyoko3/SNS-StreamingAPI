@@ -3,5 +3,5 @@ vendor/
 *.DS_Store
 composer.lock
 package-lock.json
-*.sql
-info.php
+database.xml
+API_Key.xml
