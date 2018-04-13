@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>index.html</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+<ul id="eventList">
+</ul>
+<script>
+    var es = new EventSource('./api/ServerSentEvent.php');
+
+    es.addEventListener('message', function (event) {
+        console.log(event);
+        var newElement = document.createElement("li");
+        var eventList = document.getElementById('eventList');
+
+        newElement.innerHTML = "message: " + event.data;
+        eventList.appendChild(newElement);
+        if(eventList.children.length > 30){
+            eventList.removeChild(eventList.firstElementChild)
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "name": "tatsuya/api",
+    "require": {
+        "mapyo/eloquent-only": "^1.0"
+    }
+}
