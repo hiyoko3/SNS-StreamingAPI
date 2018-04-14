@@ -49,7 +49,7 @@ class DBManager extends SingletonCore{
             $this->capsule->addConnection([
                 'driver' => 'mysql',
                 'host' => '127.0.0.1',
-                'database' => $this->config->host,
+                'database' => $this->config->db,
                 'username' => $this->config->username,
                 'password' => $this->config->password,
                 'port' => $this->config->port,

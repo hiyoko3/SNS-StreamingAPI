@@ -5,3 +5,4 @@ composer.lock
 package-lock.json
 database.xml
 API_Key.xml
+*.sql
