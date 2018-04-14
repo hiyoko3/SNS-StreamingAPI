@@ -26,8 +26,6 @@ class TwitterAPI extends OauthPhirehose{
         $data = json_decode($status, true);
 
         if (is_array($data) && isset($data['user']['screen_name'])) {
-            print $data['user']['screen_name'] . ': ' . urldecode($data['text']) . "\n";
-
             // Build a text.
             $text = preg_replace('/[\xF0-\xF7][\x80-\xBF][\x80-\xBF][\x80-\xBF]/', '', urldecode($data['text']));
             if(is_array($data['coordinates']) && isset($data['coordinates'])){

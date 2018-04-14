@@ -13,6 +13,7 @@
     },
     "scripts": {
         "start": "",
-        "start:ws": "php ws_serve.php"
+        "start:ws": "php ws_serve.php",
+        "curl:ws": "curl http://localhost/streamingAPI/index.php"
     }
 }
